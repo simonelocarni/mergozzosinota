@@ -794,3 +794,136 @@ button, a {
     transition-duration: 0.01ms !important;
   }
 }
+
+
+/* ===== CORREZIONI LAYOUT — MERGOZZO SI NOTA ===== */
+
+/* Header: niente menu schiacciato */
+.site-header {
+  position: relative;
+}
+
+.header-inner {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+
+.logo {
+  flex-shrink: 0;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 24px;
+  margin-left: auto;
+}
+
+/* Hero: fotografia grande e ben visibile */
+.hero-image-wrap {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: clamp(420px, 65vw, 760px);
+  min-height: 0;
+  overflow: hidden;
+  background: #343a35;
+}
+
+.hero-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Eventi: carosello orizzontale */
+.events-section .event-grid {
+  display: grid;
+  grid-template-columns: none;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% - 40px) / 3);
+  gap: 20px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0 0 22px;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #ff5b45 #d8d5cc;
+}
+
+.events-section .event-card {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  scroll-snap-align: start;
+}
+
+.events-section .event-image-wrap {
+  width: 100%;
+  aspect-ratio: 4 / 4.7;
+  overflow: hidden;
+}
+
+.events-section .event-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Tablet: due schede visibili circa */
+@media (max-width: 900px) {
+  .header-inner {
+    gap: 18px;
+  }
+
+  .nav-links {
+    gap: 16px;
+  }
+
+  .events-section .event-grid {
+    grid-auto-columns: calc((100% - 20px) / 2);
+  }
+}
+
+/* Smartphone: menu su una riga, eventi scorrevoli */
+@media (max-width: 600px) {
+  .header-inner {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 12px 22px;
+    margin-left: 0;
+  }
+
+  .hero-image-wrap {
+    height: 480px;
+  }
+
+  .events-section .event-grid {
+    grid-auto-columns: 84%;
+    gap: 16px;
+  }
+
+  .events-section .event-image-wrap {
+    aspect-ratio: 4 / 3.8;
+  }
+}
+
