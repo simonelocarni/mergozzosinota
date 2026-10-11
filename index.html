@@ -6,35 +6,86 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Mergozzo Si Nota — Festival</title>
-
-  <meta
-    name="description"
-    content="Mergozzo Si Nota: festival di musica, cultura e incontri sul territorio di Mergozzo."
-  >
-
+  <meta name="description" content="Mergozzo Si Nota: festival di musica, cultura e incontri sul territorio di Mergozzo.">
   <meta name="theme-color" content="#f4f1e9">
 
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* Freccia della galleria eventi */
+    .event-carousel {
+      position: relative;
+    }
+
+    .event-scroll-next {
+      display: none;
+    }
+
+    @media (min-width: 601px) {
+      .events-section .event-grid {
+        scrollbar-width: none;
+      }
+
+      .events-section .event-grid::-webkit-scrollbar {
+        display: none;
+      }
+
+      .event-scroll-next {
+        display: flex;
+        position: absolute;
+        z-index: 10;
+        top: 50%;
+        right: 8px;
+        transform: translateY(-50%);
+        width: 54px;
+        height: 54px;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(255, 255, 255, 0.65);
+        border-radius: 50%;
+        background: rgba(30, 32, 28, 0.55);
+        color: white;
+        font-family: inherit;
+        font-size: 30px;
+        font-weight: 300;
+        cursor: pointer;
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+        transition: background 0.25s ease, opacity 0.25s ease;
+      }
+
+      .event-scroll-next:hover {
+        background: rgba(30, 32, 28, 0.85);
+      }
+
+      .event-scroll-next.is-hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
   <!-- HEADER -->
-
   <header class="site-header">
     <div class="container header-inner">
 
       <a href="index.html" class="logo">
-  <img src="images/logo-mergozzo-si-nota.png"
-       alt="Mergozzo Si Nota"
-       class="logo-image">
-</a>
+        <img
+          src="images/logo-mergozzo-si-nota.png"
+          alt="Mergozzo Si Nota"
+          class="logo-image"
+        >
+      </a>
 
       <nav class="nav-links">
-  <a href="chi-siamo.html">Chi siamo</a>
-  <a href="eventi.html">Eventi</a>
-  <a href="contatti.html">Contatti</a>
-</nav>
+        <a href="chi-siamo.html">Chi siamo</a>
+        <a href="eventi.html">Eventi</a>
+        <a href="contatti.html">Contatti</a>
+      </nav>
 
       <a class="nav-cta" href="#eventi">
         Scopri gli eventi <span aria-hidden="true">↗</span>
@@ -46,54 +97,48 @@
   <main id="inizio">
 
     <!-- HERO -->
+    <section class="hero">
+      <div class="hero-slideshow">
 
-   <section class="hero">
-  <div class="hero-slideshow">
-    <img
-  class="hero-slide is-active"
-  src="images/concerto1.jpeg"
-  alt="Concerto dal vivo"
->
-<img
-  class="hero-slide"
-  src="images/concerto2.jpg"
-  alt="Concerto dal vivo"
->
-<img
-  class="hero-slide"
-  src="images/concerto3.jpg"
-  alt="Concerto dal vivo"
->
-<img
-  class="hero-slide"
-  src="images/concerto4.png"
-  alt="Concerto dal vivo"
->
-<img
-  class="hero-slide"
-  src="images/concerto5.jpg"
-  alt="Concerto dal vivo"
->
+        <img class="hero-slide is-active"
+             src="images/concerto1.jpeg"
+             alt="Concerto dal vivo">
 
-    <div class="hero-overlay"></div>
+        <img class="hero-slide"
+             src="images/concerto2.jpg"
+             alt="Concerto dal vivo">
 
-    <div class="hero-content">
-      <p class="hero-eyebrow">MERGOZZO · MUSICA · TERRITORIO</p>
-      <h1>La musica<br>ci muove.</h1>
-    </div>
+        <img class="hero-slide"
+             src="images/concerto3.jpg"
+             alt="Concerto dal vivo">
 
-    <div class="hero-counter" aria-hidden="true">
-      <span class="hero-dot is-active"></span>
-      <span class="hero-dot"></span>
-      <span class="hero-dot"></span>
-      <span class="hero-dot"></span>
-      <span class="hero-dot"></span>
-    </div>
-  </div>
-</section>
+        <img class="hero-slide"
+             src="images/concerto4.png"
+             alt="Concerto dal vivo">
+
+        <img class="hero-slide"
+             src="images/concerto5.jpg"
+             alt="Concerto dal vivo">
+
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+          <p class="hero-eyebrow">MERGOZZO · MUSICA · TERRITORIO</p>
+          <h1>La musica<br>ci muove.</h1>
+        </div>
+
+        <div class="hero-counter" aria-hidden="true">
+          <span class="hero-dot is-active"></span>
+          <span class="hero-dot"></span>
+          <span class="hero-dot"></span>
+          <span class="hero-dot"></span>
+          <span class="hero-dot"></span>
+        </div>
+
+      </div>
+    </section>
 
     <!-- INTRODUZIONE -->
-
     <section class="container intro">
 
       <div>
@@ -126,7 +171,6 @@
     </section>
 
     <!-- PROGRAMMA -->
-
     <section class="events-section" id="eventi">
       <div class="container">
 
@@ -142,135 +186,133 @@
           </p>
         </div>
 
-        <div class="event-grid">
+        <!-- GALLERIA SCORREVOLE -->
+        <div class="event-carousel">
 
-    
-         <!-- EVENTO 01 -->
+          <div class="event-grid">
 
-<a class="event-card" href="eventi/ramberto-ciammarughi.html">
+            <!-- EVENTO 01 -->
+            <a class="event-card" href="eventi/ramberto-ciammarughi.html">
 
-  <div class="event-image-wrap">
-    <img
-      class="event-image"
-      src="images/Ramberto-Ciammarughi-scaled.jpg"
-      alt="Concerto di Ramberto Ciammarughi"
-      loading="lazy"
-    >
+              <div class="event-image-wrap">
+                <img
+                  class="event-image"
+                  src="images/Ramberto-Ciammarughi-scaled.jpg"
+                  alt="Concerto di Ramberto Ciammarughi"
+                  loading="lazy"
+                >
 
-    <span class="event-number">01</span>
-    <span class="event-arrow" aria-hidden="true">↗</span>
-  </div>
+                <span class="event-number">01</span>
+                <span class="event-arrow" aria-hidden="true">↗</span>
+              </div>
 
-  <div class="event-info">
+              <div class="event-info">
+                <div class="event-meta">
+                  <span class="event-date">17 ottobre 2026</span>
+                  <span>Concerto</span>
+                </div>
 
-    <div class="event-meta">
-      <span class="event-date">17 ottobre 2026</span>
-      <span>Concerto</span>
-    </div>
+                <h3>Ramberto Ciammarughi</h3>
+                <span class="event-details">Scopri l'evento ↗</span>
+              </div>
 
-    <h3>Ramberto Ciammarughi</h3>
+            </a>
 
-    <span class="event-details">Scopri l'evento ↗</span>
+            <!-- EVENTO 02 -->
+            <a class="event-card" href="eventi/gianluca-palazzo-trio.html">
 
-  </div>
-</a>
+              <div class="event-image-wrap">
+                <img
+                  class="event-image"
+                  src="images/gianluca palazzo.JPG"
+                  alt="Concerto di Gianluca Palazzo Trio"
+                  loading="lazy"
+                >
 
-          <!-- EVENTO 02 -->
+                <span class="event-number">02</span>
+                <span class="event-arrow" aria-hidden="true">↗</span>
+              </div>
 
-          <a class="event-card" href="eventi/gianluca-palazzo-trio.html">
+              <div class="event-info">
+                <div class="event-meta">
+                  <span class="event-date">21 novembre 2026</span>
+                  <span>Concerto</span>
+                </div>
 
-  <div class="event-image-wrap">
-    <img
-      class="event-image"
-      src="images/gianluca palazzo.JPG"
-      alt="Concerto di Gianluca Palazzo Trio"
-      loading="lazy"
-    >
+                <h3>Gianluca Palazzo Trio</h3>
+                <span class="event-details">Scopri l'evento ↗</span>
+              </div>
 
-    <span class="event-number">02</span>
-    <span class="event-arrow" aria-hidden="true">↗</span>
-  </div>
+            </a>
 
-  <div class="event-info">
+            <!-- EVENTO 03 -->
+            <a class="event-card" href="eventi/giorgio-conte.html">
 
-    <div class="event-meta">
-      <span class="event-date">21 novembre 2026</span>
-      <span>Concerto</span>
-    </div>
+              <div class="event-image-wrap">
+                <img
+                  class="event-image"
+                  src="images/giorgio conte.jpg"
+                  alt="Concerto di Giorgio Conte"
+                  loading="lazy"
+                >
 
-    <h3>Gianluca Palazzo Trio</h3>
+                <span class="event-number">03</span>
+                <span class="event-arrow" aria-hidden="true">↗</span>
+              </div>
 
-    <span class="event-details">Scopri l'evento ↗</span>
+              <div class="event-info">
+                <div class="event-meta">
+                  <span class="event-date">12 dicembre 2026</span>
+                  <span>Concerto</span>
+                </div>
 
-  </div>
-</a>
-          <!-- EVENTO 03 -->
+                <h3>Giorgio Conte</h3>
+                <span class="event-details">Scopri l'evento ↗</span>
+              </div>
 
-          <a class="event-card" href="eventi/giorgio-conte.html">
+            </a>
 
-  <div class="event-image-wrap">
-    <img
-      class="event-image"
-      src="images/giorgio conte.jpg"
-      alt="Concerto di Giorgio Conte"
-      loading="lazy"
-    >
+            <!-- EVENTO 04 -->
+            <a class="event-card" href="eventi/sannelli-dulbecco.html">
 
-    <span class="event-number">03</span>
-    <span class="event-arrow" aria-hidden="true">↗</span>
-  </div>
+              <div class="event-image-wrap">
+                <img
+                  class="event-image"
+                  src="images/sannellidulbecco.jpg"
+                  alt="Concerto di Michele Sannelli e Andrea Dulbecco"
+                  loading="lazy"
+                >
 
-  <div class="event-info">
+                <span class="event-number">04</span>
+                <span class="event-arrow" aria-hidden="true">↗</span>
+              </div>
 
-    <div class="event-meta">
-      <span class="event-date">12 dicembre 2026</span>
-      <span>Concerto</span>
-    </div>
+              <div class="event-info">
+                <div class="event-meta">
+                  <span class="event-date">23 gennaio 2026</span>
+                  <span>Concerto</span>
+                </div>
 
-    <h3>Giorgio Conte</h3>
+                <h3>Michele Sannelli e Andrea Dulbecco</h3>
+                <span class="event-details">Scopri l'evento ↗</span>
+              </div>
 
-    <span class="event-details">Scopri l'evento ↗</span>
+            </a>
 
-  </div>
-</a>
+          </div>
 
-          <!-- EVENTO 04 -->
+          <!-- FRECCIA PER AVANZARE -->
+          <button
+            class="event-scroll-next"
+            type="button"
+            aria-label="Mostra gli eventi successivi"
+          >→</button>
 
-          <a class="event-card" href="eventi/sannelli-dulbecco.html">
-
-  <div class="event-image-wrap">
-    <img
-      class="event-image"
-      src="images/sannellidulbecco.jpg"
-      alt="Concerto di Michele Sannelli e Andrea Dulbecco"
-      loading="lazy"
-    >
-
-    <span class="event-number">04</span>
-    <span class="event-arrow" aria-hidden="true">↗</span>
-  </div>
-
-  <div class="event-info">
-
-    <div class="event-meta">
-      <span class="event-date">23 gennaio 2026</span>
-      <span>Concerto</span>
-    </div>
-
-    <h3>Michele Sannelli e Andrea Dulbecco</h3>
-
-    <span class="event-details">Scopri l'evento ↗</span>
-
-  </div>
-</a>
-          
         </div>
-
       </div>
     </section>
 
     <!-- IL FESTIVAL -->
-
     <section class="about-section" id="festival">
       <div class="container about-grid">
 
@@ -309,7 +351,6 @@
     </section>
 
     <!-- CONTATTI -->
-
     <section class="contact-strip" id="contatti">
       <div class="container contact-inner">
 
@@ -331,7 +372,6 @@
   </main>
 
   <!-- FOOTER -->
-
   <footer class="site-footer">
     <div class="container footer-inner">
 
@@ -352,39 +392,72 @@
     </div>
   </footer>
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const slides = document.querySelectorAll(".hero-slide");
-  const dots = document.querySelectorAll(".hero-dot");
+  <!-- SLIDESHOW PRINCIPALE -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const slides = document.querySelectorAll(".hero-slide");
+      const dots = document.querySelectorAll(".hero-dot");
 
-  if (slides.length < 2) {
-    console.log("Hero: non trovo abbastanza immagini.");
-    return;
-  }
+      if (slides.length < 2) return;
 
-  let current = 0;
+      let current = 0;
 
-  function showNextSlide() {
-    slides[current].classList.remove("is-active");
+      function showNextSlide() {
+        slides[current].classList.remove("is-active");
 
-    if (dots[current]) {
-      dots[current].classList.remove("is-active");
-    }
+        if (dots[current]) {
+          dots[current].classList.remove("is-active");
+        }
 
-    current = (current + 1) % slides.length;
+        current = (current + 1) % slides.length;
 
-    slides[current].classList.add("is-active");
+        slides[current].classList.add("is-active");
 
-    if (dots[current]) {
-      dots[current].classList.add("is-active");
-    }
-  }
+        if (dots[current]) {
+          dots[current].classList.add("is-active");
+        }
+      }
 
-  window.setInterval(showNextSlide, 2800);
-});
-</script>
-  
+      window.setInterval(showNextSlide, 2800);
+    });
+  </script>
+
+  <!-- FRECCIA DELLA GALLERIA EVENTI -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const grid = document.querySelector(".events-section .event-grid");
+      const button = document.querySelector(".event-scroll-next");
+
+      if (!grid || !button) return;
+
+      function updateArrow() {
+        const hasMore =
+          grid.scrollLeft + grid.clientWidth < grid.scrollWidth - 5;
+
+        button.classList.toggle("is-hidden", !hasMore);
+      }
+
+      button.addEventListener("click", function () {
+        const card = grid.querySelector(".event-card");
+        if (!card) return;
+
+        const styles = window.getComputedStyle(grid);
+        const gap = parseFloat(styles.columnGap) || 0;
+        const distance = card.getBoundingClientRect().width + gap;
+
+        grid.scrollBy({
+          left: distance,
+          behavior: "smooth"
+        });
+      });
+
+      grid.addEventListener("scroll", updateArrow);
+      window.addEventListener("resize", updateArrow);
+
+      updateArrow();
+      window.setTimeout(updateArrow, 400);
+    });
+  </script>
+
 </body>
 </html>
-
-
