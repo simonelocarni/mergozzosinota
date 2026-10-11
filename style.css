@@ -1085,3 +1085,33 @@ button, a {
     object-position: center 35%;
   }
 }
+
+/* Barra degli eventi: nasconde la scrollbar */
+.events-section .event-grid {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.events-section .event-grid::-webkit-scrollbar {
+  display: none;
+}
+
+/* Frecce più discrete, solo su computer */
+@media (min-width: 601px) {
+  .event-carousel .event-scroll-next,
+  .event-carousel .event-scroll-prev {
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    background: rgba(30, 32, 28, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+  }
+
+  .event-carousel .event-scroll-next {
+    right: 5px;
+  }
+
+  .event-carousel .event-scroll-prev {
+    left: 5px;
+  }
+}
