@@ -1,12 +1,127 @@
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Ramberto Ciammarughi — Mergozzo Si Nota</title>
+  <meta name="description" content="Ramberto Ciammarughi in concerto per Mergozzo Si Nota, 17 ottobre 2026.">
+
   <link rel="stylesheet" href="../style.css">
+
+  <style>
+    .concert-page {
+      background: #f7f6f2;
+      min-height: 100vh;
+    }
+
+    .concert-hero {
+      position: relative;
+      min-height: 72vh;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      background: #252822;
+      color: white;
+    }
+
+    .concert-hero-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 45%;
+    }
+
+    .concert-hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        0deg,
+        rgba(10, 12, 10, 0.78),
+        rgba(10, 12, 10, 0.08) 85%
+      );
+    }
+
+    .concert-hero-content {
+      position: relative;
+      z-index: 1;
+      width: min(1100px, 86%);
+      margin: 0 auto;
+      padding: 90px 0 75px;
+    }
+
+    .concert-eyebrow {
+      margin: 0 0 22px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.17em;
+      text-transform: uppercase;
+    }
+
+    .concert-hero h1 {
+      max-width: 950px;
+      margin: 0;
+      color: white;
+      font-size: clamp(44px, 8vw, 100px);
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+    }
+
+    .concert-info {
+      width: min(1100px, 86%);
+      margin: 0 auto;
+      padding: 55px 0 75px;
+    }
+
+    .concert-date {
+      margin: 0 0 12px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .concert-type {
+      margin: 0;
+      font-size: 17px;
+    }
+
+    .concert-back {
+      display: inline-block;
+      margin-top: 40px;
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid currentColor;
+      padding-bottom: 5px;
+    }
+
+    .concert-back:hover {
+      opacity: 0.65;
+    }
+
+    @media (max-width: 600px) {
+      .concert-hero {
+        min-height: 68vh;
+      }
+
+      .concert-hero-content {
+        width: calc(100% - 48px);
+        padding: 70px 0 55px;
+      }
+
+      .concert-info {
+        width: calc(100% - 48px);
+        padding: 38px 0 55px;
+      }
+    }
+  </style>
 </head>
-<body>
+
+<body class="concert-page">
 
   <header class="header">
     <a href="../index.html" class="logo">
@@ -25,17 +140,26 @@
   </header>
 
   <main>
-    <section class="event-detail">
-      <p>CONCERTO · 17 OTTOBRE 2026</p>
-      <h1>RAMBERTO CIAMMARUGHI</h1>
-
+    <section class="concert-hero">
       <img
+        class="concert-hero-image"
         src="../images/concerto1.jpg"
-        alt="Concerto di Ramberto Ciammarughi"
-        class="event-detail-image"
+        alt="Ramberto Ciammarughi in concerto"
       >
 
-      <a href="../index.html">← Torna alla homepage</a>
+      <div class="concert-hero-content">
+        <p class="concert-eyebrow">Mergozzo Si Nota · Concerto</p>
+        <h1>Ramberto<br>Ciammarughi</h1>
+      </div>
+    </section>
+
+    <section class="concert-info">
+      <p class="concert-date">17 ottobre 2026</p>
+      <p class="concert-type">Concerto</p>
+
+      <a class="concert-back" href="../index.html">
+        ← Torna a Mergozzo Si Nota
+      </a>
     </section>
   </main>
 
