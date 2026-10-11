@@ -425,8 +425,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   const grid = document.querySelector(".events-section .event-grid");
   const carousel = document.querySelector(".event-carousel");
-  const next = document.querySelector(".event-scroll-next");
-  const prev = document.querySelector(".event-scroll-prev");
 
   if (!grid || !carousel) return;
 
@@ -435,15 +433,27 @@ document.addEventListener("DOMContentLoaded", function () {
     const hasMore = maxScroll > 5 && grid.scrollLeft < maxScroll - 5;
 
     carousel.classList.toggle("has-more-events", hasMore);
-
-    if (next) {
-      next.classList.add("is-hidden");
-    }
-
-    if (prev) {
-      prev.classList.add("is-hidden");
-    }
   }
+
+  carousel.addEventListener("click", function (event) {
+    if (event.target.closest(".event-scroll-next, .event-scroll-prev")) return;
+
+    const rect = carousel.getBoundingClientRect();
+    const isRightEdge = event.clientX > rect.right - 100;
+
+    if (isRightEdge && grid.scrollLeft < grid.scrollWidth - grid.clientWidth - 5) {
+      event.preventDefault();
+      event.stopPropagation();
+
+      const card = grid.querySelector(".event-card");
+      const distance = card ? card.getBoundingClientRect().width : grid.clientWidth * 0.8;
+
+      grid.scrollBy({
+        left: distance,
+        behavior: "smooth"
+      });
+    }
+  }, true);
 
   grid.addEventListener("scroll", updateGallery);
   window.addEventListener("resize", updateGallery);
