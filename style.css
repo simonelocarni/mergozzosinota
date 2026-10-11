@@ -1144,6 +1144,7 @@ button, a {
   }
 
   .event-carousel.has-more-events::before {
+    pointer-events: auto;
     content: "→";
     position: absolute;
     right: 15px;
