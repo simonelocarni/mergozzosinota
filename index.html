@@ -421,6 +421,7 @@
   </script>
 
  <!-- SUGGERIMENTO SCORRIMENTO GALLERIA EVENTI -->
+<!-- SUGGERIMENTI SCORRIMENTO GALLERIA EVENTI -->
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   const grid = document.querySelector(".events-section .event-grid");
@@ -429,27 +430,43 @@ document.addEventListener("DOMContentLoaded", function () {
   if (!grid || !carousel) return;
 
   function updateGallery() {
-    const maxScroll = grid.scrollWidth - grid.clientWidth;
-    const hasMore = maxScroll > 5 && grid.scrollLeft < maxScroll - 5;
+    const maxScroll = Math.max(0, grid.scrollWidth - grid.clientWidth);
 
-    carousel.classList.toggle("has-more-events", hasMore);
+    carousel.classList.toggle(
+      "has-more-events",
+      maxScroll > 5 && grid.scrollLeft < maxScroll - 5
+    );
+
+    carousel.classList.toggle(
+      "has-previous-events",
+      grid.scrollLeft > 5
+    );
   }
 
   carousel.addEventListener("click", function (event) {
-    if (event.target.closest(".event-scroll-next, .event-scroll-prev")) return;
-
     const rect = carousel.getBoundingClientRect();
     const isRightEdge = event.clientX > rect.right - 100;
+    const isLeftEdge = event.clientX < rect.left + 100;
+    const maxScroll = grid.scrollWidth - grid.clientWidth;
 
-    if (isRightEdge && grid.scrollLeft < grid.scrollWidth - grid.clientWidth - 5) {
+    if (
+      isRightEdge &&
+      maxScroll > 5 &&
+      grid.scrollLeft < maxScroll - 5
+    ) {
       event.preventDefault();
       event.stopPropagation();
 
-      const card = grid.querySelector(".event-card");
-      const distance = card ? card.getBoundingClientRect().width : grid.clientWidth * 0.8;
+      grid.scrollBy({
+        left: grid.clientWidth * 0.8,
+        behavior: "smooth"
+      });
+    } else if (isLeftEdge && grid.scrollLeft > 5) {
+      event.preventDefault();
+      event.stopPropagation();
 
       grid.scrollBy({
-        left: distance,
+        left: -grid.clientWidth * 0.8,
         behavior: "smooth"
       });
     }
