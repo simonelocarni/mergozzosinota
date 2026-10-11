@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="style.css">
 
   
+
 <style>
   .event-carousel {
     position: relative;
@@ -23,45 +24,36 @@
   }
 
   @media (min-width: 601px) {
-    .events-section .event-grid {
-      scrollbar-width: none;
-    }
-
-    .events-section .event-grid::-webkit-scrollbar {
-      display: none;
-    }
-
-    .event-scroll-next,
-    .event-scroll-prev {
+    .event-carousel .event-scroll-next,
+    .event-carousel .event-scroll-prev {
       display: flex;
       position: absolute;
-      z-index: 10;
-      top: 42%;
-      width: 42px;
-      height: 42px;
+      z-index: 20;
+      top: 45%;
+      width: 44px;
+      height: 44px;
       align-items: center;
       justify-content: center;
-      border: 0;
+      border: 1px solid rgba(255,255,255,.65);
       border-radius: 50%;
-      background: rgba(30, 32, 28, 0.42);
+      background: rgba(30,32,28,.65);
       color: white;
-      font-size: 25px;
+      font-size: 26px;
       cursor: pointer;
-      transition: opacity 0.25s ease;
+      transition: opacity .2s ease;
     }
 
-    .event-scroll-next {
+    .event-carousel .event-scroll-next {
       right: 8px;
     }
 
-    .event-scroll-prev {
+    .event-carousel .event-scroll-prev {
       left: 8px;
     }
 
-    .event-scroll-next.is-hidden,
-    .event-scroll-prev.is-hidden {
-      opacity: 0;
-      pointer-events: none;
+    .event-carousel .event-scroll-next.is-hidden,
+    .event-carousel .event-scroll-prev.is-hidden {
+      display: none;
     }
   }
 </style>
@@ -465,6 +457,7 @@
     });
   </script>
 
+
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   const grid = document.querySelector(".events-section .event-grid");
@@ -475,30 +468,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function updateArrows() {
     const maxScroll = grid.scrollWidth - grid.clientWidth;
-    const position = grid.scrollLeft;
 
-    // La freccia destra compare avvicinandosi
-    // al terzo evento.
     next.classList.toggle(
       "is-hidden",
-      maxScroll <= 5 || position < maxScroll * 0.35
+      maxScroll <= 5 || grid.scrollLeft >= maxScroll - 5
     );
 
-    // La freccia sinistra compare dopo aver
-    // iniziato a scorrere.
-    prev.classList.toggle("is-hidden", position <= 5);
+    prev.classList.toggle(
+      "is-hidden",
+      grid.scrollLeft <= 5
+    );
   }
 
   next.addEventListener("click", function () {
     grid.scrollBy({
-      left: grid.clientWidth * 0.75,
+      left: grid.clientWidth * 0.8,
       behavior: "smooth"
     });
   });
 
   prev.addEventListener("click", function () {
     grid.scrollBy({
-      left: -grid.clientWidth * 0.75,
+      left: -grid.clientWidth * 0.8,
       behavior: "smooth"
     });
   });
@@ -507,7 +498,7 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("resize", updateArrows);
 
   updateArrows();
-  setTimeout(updateArrows, 400);
+  setTimeout(updateArrows, 500);
 });
 </script>
 
