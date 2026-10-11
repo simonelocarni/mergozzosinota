@@ -11,60 +11,60 @@
 
   <link rel="stylesheet" href="style.css">
 
-  <style>
-    /* Freccia della galleria eventi */
-    .event-carousel {
-      position: relative;
+  
+<style>
+  .event-carousel {
+    position: relative;
+  }
+
+  .event-scroll-next,
+  .event-scroll-prev {
+    display: none;
+  }
+
+  @media (min-width: 601px) {
+    .events-section .event-grid {
+      scrollbar-width: none;
     }
 
-    .event-scroll-next {
+    .events-section .event-grid::-webkit-scrollbar {
       display: none;
     }
 
-    @media (min-width: 601px) {
-      .events-section .event-grid {
-        scrollbar-width: none;
-      }
-
-      .events-section .event-grid::-webkit-scrollbar {
-        display: none;
-      }
-
-      .event-scroll-next {
-        display: flex;
-        position: absolute;
-        z-index: 10;
-        top: 50%;
-        right: 8px;
-        transform: translateY(-50%);
-        width: 54px;
-        height: 54px;
-        align-items: center;
-        justify-content: center;
-        border: 1px solid rgba(255, 255, 255, 0.65);
-        border-radius: 50%;
-        background: rgba(30, 32, 28, 0.55);
-        color: white;
-        font-family: inherit;
-        font-size: 30px;
-        font-weight: 300;
-        cursor: pointer;
-        backdrop-filter: blur(5px);
-        -webkit-backdrop-filter: blur(5px);
-        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
-        transition: background 0.25s ease, opacity 0.25s ease;
-      }
-
-      .event-scroll-next:hover {
-        background: rgba(30, 32, 28, 0.85);
-      }
-
-      .event-scroll-next.is-hidden {
-        opacity: 0;
-        pointer-events: none;
-      }
+    .event-scroll-next,
+    .event-scroll-prev {
+      display: flex;
+      position: absolute;
+      z-index: 10;
+      top: 42%;
+      width: 42px;
+      height: 42px;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(30, 32, 28, 0.42);
+      color: white;
+      font-size: 25px;
+      cursor: pointer;
+      transition: opacity 0.25s ease;
     }
-  </style>
+
+    .event-scroll-next {
+      right: 8px;
+    }
+
+    .event-scroll-prev {
+      left: 8px;
+    }
+
+    .event-scroll-next.is-hidden,
+    .event-scroll-prev.is-hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+</style>
 </head>
 
 <body>
@@ -303,10 +303,16 @@
 
           <!-- FRECCIA PER AVANZARE -->
           <button
-            class="event-scroll-next"
-            type="button"
-            aria-label="Mostra gli eventi successivi"
-          >→</button>
+  class="event-scroll-prev is-hidden"
+  type="button"
+  aria-label="Torna agli eventi precedenti"
+>←</button>
+
+<button
+  class="event-scroll-next is-hidden"
+  type="button"
+  aria-label="Mostra gli eventi successivi"
+>→</button>
 
         </div>
       </div>
@@ -458,6 +464,52 @@
       window.setTimeout(updateArrow, 400);
     });
   </script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const grid = document.querySelector(".events-section .event-grid");
+  const next = document.querySelector(".event-scroll-next");
+  const prev = document.querySelector(".event-scroll-prev");
+
+  if (!grid || !next || !prev) return;
+
+  function updateArrows() {
+    const maxScroll = grid.scrollWidth - grid.clientWidth;
+    const position = grid.scrollLeft;
+
+    // La freccia destra compare avvicinandosi
+    // al terzo evento.
+    next.classList.toggle(
+      "is-hidden",
+      maxScroll <= 5 || position < maxScroll * 0.35
+    );
+
+    // La freccia sinistra compare dopo aver
+    // iniziato a scorrere.
+    prev.classList.toggle("is-hidden", position <= 5);
+  }
+
+  next.addEventListener("click", function () {
+    grid.scrollBy({
+      left: grid.clientWidth * 0.75,
+      behavior: "smooth"
+    });
+  });
+
+  prev.addEventListener("click", function () {
+    grid.scrollBy({
+      left: -grid.clientWidth * 0.75,
+      behavior: "smooth"
+    });
+  });
+
+  grid.addEventListener("scroll", updateArrows);
+  window.addEventListener("resize", updateArrows);
+
+  updateArrows();
+  setTimeout(updateArrows, 400);
+});
+</script>
 
 </body>
 </html>
