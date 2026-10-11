@@ -1,1 +1,219 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>Ramberto Ciammarughi — Mergozzo Si Nota</title>
+  <meta name="description" content="Gianluca Palazzo Trio in concerto per Mergozzo Si Nota, 21 novembre 2026.">
+
+  <link rel="stylesheet" href="../style.css">
+
+  <style>
+    .concert-page {
+      background: #f7f6f2;
+      min-height: 100vh;
+    }
+
+    .concert-hero {
+  position: relative;
+  min-height: 72vh;
+  margin-top: 8px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: #252822;
+  color: white;
+}
+
+    .concert-hero-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 45%;
+    }
+
+    .concert-hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        0deg,
+        rgba(10, 12, 10, 0.78),
+        rgba(10, 12, 10, 0.08) 85%
+      );
+    }
+
+    .concert-hero-content {
+      position: relative;
+      z-index: 1;
+      width: min(1100px, 86%);
+      margin: 0 auto;
+      padding: 90px 0 75px;
+    }
+
+    .concert-eyebrow {
+      margin: 0 0 22px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.17em;
+      text-transform: uppercase;
+    }
+
+    .concert-hero h1 {
+      max-width: 950px;
+      margin: 0;
+      color: white;
+      font-size: clamp(44px, 8vw, 100px);
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+    }
+
+    .concert-info {
+      width: min(1100px, 86%);
+      margin: 0 auto;
+      padding: 55px 0 75px;
+    }
+
+    .concert-date {
+      margin: 0 0 12px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .concert-type {
+      margin: 0;
+      font-size: 17px;
+    }
+
+    .concert-back {
+      display: inline-block;
+      margin-top: 40px;
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid currentColor;
+      padding-bottom: 5px;
+    }
+
+    .concert-back:hover {
+      opacity: 0.65;
+    }
+
+    @media (max-width: 600px) {
+      .concert-hero {
+        min-height: 68vh;
+      }
+
+      .concert-hero-content {
+        width: calc(100% - 48px);
+        padding: 70px 0 55px;
+      }
+
+      .concert-info {
+        width: calc(100% - 48px);
+        padding: 38px 0 55px;
+      }
+    }
+
+    /* Spaziatura del menu nella pagina del concerto */
+.concert-page .header {
+  padding: 22px 7%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+  .concert-page .header {
+    padding: 18px 24px;
+  }
+}
+  </style>
+</head>
+
+<body class="concert-page">
+
+  <header class="header">
+    <a href="../index.html" class="logo">
+      <img
+        src="../images/logo-mergozzo-si-nota.png"
+        alt="Mergozzo Si Nota"
+        class="logo-image"
+      >
+    </a>
+
+    <nav class="nav-links">
+      <a href="../chi-siamo.html">Chi siamo</a>
+      <a href="../eventi.html">Eventi</a>
+      <a href="../contatti.html">Contatti</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="concert-hero">
+      <img
+        class="concert-hero-image"
+        src="../images/gianluca palazzo.JPG"
+        alt="Gianluca Palazzo in concerto"
+      >
+
+      <div class="concert-hero-content">
+        <p class="concert-eyebrow">Mergozzo Si Nota · Concerto</p>
+        <h1>Gianluca<br>Palazzo<br>Trio</h1>
+      </div>
+    </section>
+
+    <section class="concert-info">
+      <p class="concert-date">21 novembre 2026</p>
+      <p class="concert-time">18.00</p>
+      <p class="concert-location">Antica Latteria di Mergozzo</p>
+
+      <div class="concert-description">
+    <p>
+      Pianista, compositore e arrangiatore di straordinaria sensibilità, <strong>Ramberto Ciammarughi</strong> si attesta come
+      una delle figure più poliedriche e raffinate della scena musicale e jazzistica internazionale. Dagli esordi
+      nei jazz club italiani all'inizio degli anni ’80, la sua carriera ha tracciato un itinerario artistico caratterizzato
+      da un linguaggio espressivo unico, capace di fondere la grande tradizione del jazz con le sonorità contemporanee, la musica da camera e il mondo del teatro. 
+      </p>
+      <p>
+      <em>Cent’anni di Emozioni</em> è un recital di pianoforte solo concepito come una vera e propria rivisitazione
+della musica da Film di questo secolo.
+Il recital proviene da uno spettacolo di dimensioni più ampie ed è, in pratica, una “riduzione” operata per lo
+strumento “solo” tratta da una proposta multimediale che fu commissionata in occasione del centenario
+del cinema nel 1995.
+    </p>
+    <p>
+      Nel corso della serata i viaggi a ritroso nella storia della colonna sonora si intrecciano con alcuni piccoli
+omaggi musicali dedicati ai grandi maestri di questa arte; le parti musicali si alterneranno a brevi
+spiegazioni o introduzioni da parte dell’autore.
+E’ importante ricordare che Cent’anni di Emozioni non è una semplice esecuzione di temi musicali, ma
+una personale interpretazione delle più celebri melodie realizzata nella più ampia libertà espressiva e
+vivificata dall’alternarsi di parti scritte e parti improvvisate.
+      </p>
+    <p>
+Si tratta, insomma, di una vera e propria reinvenzione su una “memoria sonora”; un ricordo musicale
+collegato ad immagini assai note e, per molti di noi, indimenticabili.
+    </p>
+  </div>
+
+  <div class="concert-practical">
+    <p><strong>Ingresso: 15 €</strong></p>
+    <p>
+      <strong>
+        Prenotazione consigliata:
+        <a href="mailto:mergozzosinota@gmail.com">
+          mergozzosinota@gmail.com
+        </a>
+      </strong>
+    </p>
+  </div>
+      <a class="concert-back" href="../index.html">
+        ← Torna a Mergozzo Si Nota
+      </a>
+    </section>
+  </main>
+
+</body>
+</html>
