@@ -420,87 +420,38 @@
     });
   </script>
 
-  <!-- FRECCIA DELLA GALLERIA EVENTI -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const grid = document.querySelector(".events-section .event-grid");
-      const button = document.querySelector(".event-scroll-next");
-
-      if (!grid || !button) return;
-
-      function updateArrow() {
-        const hasMore =
-          grid.scrollLeft + grid.clientWidth < grid.scrollWidth - 5;
-
-        button.classList.toggle("is-hidden", !hasMore);
-      }
-
-      button.addEventListener("click", function () {
-        const card = grid.querySelector(".event-card");
-        if (!card) return;
-
-        const styles = window.getComputedStyle(grid);
-        const gap = parseFloat(styles.columnGap) || 0;
-        const distance = card.getBoundingClientRect().width + gap;
-
-        grid.scrollBy({
-          left: distance,
-          behavior: "smooth"
-        });
-      });
-
-      grid.addEventListener("scroll", updateArrow);
-      window.addEventListener("resize", updateArrow);
-
-      updateArrow();
-      window.setTimeout(updateArrow, 400);
-    });
-  </script>
-
-
+ <!-- SUGGERIMENTO SCORRIMENTO GALLERIA EVENTI -->
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   const grid = document.querySelector(".events-section .event-grid");
+  const carousel = document.querySelector(".event-carousel");
   const next = document.querySelector(".event-scroll-next");
   const prev = document.querySelector(".event-scroll-prev");
 
-  if (!grid || !next || !prev) return;
+  if (!grid || !carousel) return;
 
-  function updateArrows() {
+  function updateGallery() {
     const maxScroll = grid.scrollWidth - grid.clientWidth;
+    const hasMore = maxScroll > 5 && grid.scrollLeft < maxScroll - 5;
 
-    next.classList.toggle(
-      "is-hidden",
-      maxScroll <= 5 || grid.scrollLeft >= maxScroll - 5
-    );
+    carousel.classList.toggle("has-more-events", hasMore);
 
-    prev.classList.toggle(
-      "is-hidden",
-      grid.scrollLeft <= 5
-    );
+    if (next) {
+      next.classList.add("is-hidden");
+    }
+
+    if (prev) {
+      prev.classList.add("is-hidden");
+    }
   }
 
-  next.addEventListener("click", function () {
-    grid.scrollBy({
-      left: grid.clientWidth * 0.8,
-      behavior: "smooth"
-    });
-  });
+  grid.addEventListener("scroll", updateGallery);
+  window.addEventListener("resize", updateGallery);
 
-  prev.addEventListener("click", function () {
-    grid.scrollBy({
-      left: -grid.clientWidth * 0.8,
-      behavior: "smooth"
-    });
-  });
-
-  grid.addEventListener("scroll", updateArrows);
-  window.addEventListener("resize", updateArrows);
-
-  updateArrows();
-  setTimeout(updateArrows, 500);
+  updateGallery();
+  setTimeout(updateGallery, 400);
 });
 </script>
-
+  
 </body>
 </html>
