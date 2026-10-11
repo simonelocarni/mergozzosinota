@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Ramberto Ciammarughi — Mergozzo Si Nota</title>
-  <meta name="description" content="Gianluca Palazzo Trio in concerto per Mergozzo Si Nota, 21 novembre 2026.">
+  <title>Gianluca Palazzo Trio — Mergozzo Si Nota</title>
+  <meta name="description" content="Gianluca Palazzo Trio in concerto per Mergozzo Si Nota, 17 ottobre 2026.">
 
   <link rel="stylesheet" href="../style.css">
 
@@ -130,6 +130,13 @@
     padding: 18px 24px;
   }
 }
+
+    .concert-artist {
+  margin: 18px 0 30px;
+  font-size: 18px;
+  line-height: 1.5;
+  font-weight: 700;
+}
   </style>
 </head>
 
@@ -169,7 +176,11 @@
       <p class="concert-date">21 novembre 2026</p>
       <p class="concert-time">18.00</p>
       <p class="concert-location">Antica Latteria di Mergozzo</p>
-
+      <p class="concert-artist">
+      <strong>Gianluca Palazzo</strong> — chitarra<br>
+      <strong>Alberto Gurrisi</strong> - organo Hammond<br>
+      <strong>Ruben Bellavia</strong> - batteria<br>
+      </p>
       <div class="concert-description">
     <p>
       Pianista, compositore e arrangiatore di straordinaria sensibilità, <strong>Ramberto Ciammarughi</strong> si attesta come
