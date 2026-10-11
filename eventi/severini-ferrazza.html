@@ -35,6 +35,13 @@
       object-position: center 45%;
     }
 
+    /* Alza l'inquadratura della foto solo su PC */
+@media (min-width: 601px) {
+  .concert-hero-image {
+    object-position: center 30%;
+  }
+}
+
     .concert-hero::after {
       content: "";
       position: absolute;
