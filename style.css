@@ -1613,6 +1613,6 @@ button, a {
 /* Più spazio tra i nomi e la dicitura I soci */
 .organization-card-wide .organization-members-label {
   display: block;
-  margin-top: 45px !important;
+  margin-top: 24px !important;
   padding-top: 0;
 }
