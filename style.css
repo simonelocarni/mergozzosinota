@@ -1263,25 +1263,43 @@ button, a {
 /* Su schermi piccoli manteniamo comunque i loghi in fila */
 @media (max-width: 700px) {
   .footer-sponsors {
-    width: max-content;
-    min-width: 680px;
-    gap: 18px;
+    width: 100%;
+    min-width: 0;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 20px;
+  }
+
+  /* Logo del festival nella prima riga */
+  .footer-brand {
+    flex: 0 0 100%;
   }
 
   .footer-brand img {
     width: 110px;
   }
 
+  /* Main sponsors e relativi loghi nella seconda riga */
   .footer-sponsors-label {
     font-size: 9px;
+    flex: 0 0 auto;
   }
 
   .footer-sponsor-logos {
+    flex: 1 1 100%;
+    min-width: 0;
+    flex-wrap: wrap;
     gap: 16px;
   }
 
   .footer-sponsor-logos img {
     width: 60px;
+    max-width: 100%;
     max-height: 36px;
+  }
+
+  .footer-links {
+    justify-content: flex-start;
+    gap: 18px;
   }
 }
