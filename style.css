@@ -1316,3 +1316,16 @@ button, a {
   justify-content: flex-start;
   transform: translateX(-8px);
 }
+
+/* Credito fotografico sotto la foto */
+.about-image-wrap .photo-credit {
+  display: block;
+  width: 100%;
+  margin: 3px 0 0;
+  padding: 0;
+  text-align: left;
+  font-size: 7px;
+  line-height: 1.2;
+  color: rgba(40, 40, 40, 0.5);
+  font-weight: 400;
+}
