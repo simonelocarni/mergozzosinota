@@ -1563,3 +1563,41 @@ button, a {
   }
 }
 
+/* Quinto riquadro largo quanto due colonne */
+.organization-card-wide {
+  grid-column: 1 / -1;
+}
+
+/* Soci: due file da quattro nomi */
+.organization-members {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px 20px;
+  margin-top: 24px;
+}
+
+/* Stesso font e dimensione dei nomi delle cariche */
+.organization-members span {
+  font-size: clamp(20px, 2.5vw, 29px);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
+/* Adattamento per cellulare */
+@media (max-width: 700px) {
+  .organization-card-wide {
+    grid-column: auto;
+  }
+
+  .organization-members {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px 16px;
+  }
+
+  .organization-members span {
+    font-size: 20px;
+  }
+}
+
