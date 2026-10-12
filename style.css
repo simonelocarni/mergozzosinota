@@ -1303,3 +1303,16 @@ button, a {
     gap: 18px;
   }
 }
+
+/* Allineamento a sinistra del logo nel footer */
+.footer-sponsors {
+  justify-content: flex-start;
+  padding-left: 0;
+}
+
+.footer-brand {
+  margin-left: 0;
+  padding-left: 0;
+  justify-content: flex-start;
+  transform: translateX(-8px);
+}
